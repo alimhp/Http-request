@@ -1,11 +1,17 @@
 .newcomment {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background: #e0e7ff;
   color: #4338ca;
-  width: 200px;
+  width: 400px;
   height: 200px;
   border-radius: 5px;
+}
+input {
+  margin: 15px 0;
+}
+label {
+  margin-right: 5px;
 }
