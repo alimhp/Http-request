@@ -16,3 +16,12 @@ input {
 label {
   margin-right: 5px;
 }
+button {
+  outline: none;
+  padding: 5px 10px;
+  background-color: #5938ee;
+  color: #ffffff;
+  border-radius: 5px;
+  border: 1px solid #6d28d9;
+  margin-bottom: 5px;
+}
