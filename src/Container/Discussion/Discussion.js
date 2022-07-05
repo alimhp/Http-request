@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 const Discussion = () => {
   const [comments, setComments] = useState(null);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const getComments = async () => {
@@ -15,7 +16,7 @@ const Discussion = () => {
         const { data } = await axios.get("http://localhost:3001/comments");
         setComments(data);
       } catch (error) {
-        console.log(error);
+        setError(true);
       }
     };
     getComments();
@@ -25,25 +26,28 @@ const Discussion = () => {
     setSelectedItem(id);
   };
 
-  
+  const renderComments = () => {
+    let renderValue = <p>loading...</p>;
+    if(error) renderValue=<p>fetching data faild !</p>
+    if(comments && !error){
+      renderValue=comments.map((c) => (
+        <Comment
+          name={c.name}
+          email={c.email}
+          key={c.id}
+          onClick={() => selectCommentHandler(c.id)}
+        />
+      ))
+    }
+    return renderValue;
+   
+  };
+
   // 4 comment => 3 comment => setComment(res.data) => clickHandler()
 
   return (
     <main>
-      <section>
-        {comments ? (
-          comments.map((c) => (
-            <Comment
-              name={c.name}
-              email={c.email}
-              key={c.id}
-              onClick={() => selectCommentHandler(c.id)}
-            />
-          ))
-        ) : (
-          <p>loading...</p>
-        )}
-      </section>
+      <section>{renderComments()}</section>
       <section>
         <FullComment commentId={selectedItem} />
       </section>
