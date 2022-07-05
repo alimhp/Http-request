@@ -25,16 +25,7 @@ const Discussion = () => {
     setSelectedItem(id);
   };
 
-  const postCommentHandler = (comment) => {
-    axios
-      .post("http://localhost:3001/comments", {
-        ...comment,
-        postId: 10,
-      })
-      .then((res) => axios.get("http://localhost:3001/comments"))
-      .then((res) => setComments(res.data))
-      .catch();
-  };
+  
   // 4 comment => 3 comment => setComment(res.data) => clickHandler()
 
   return (
@@ -57,7 +48,7 @@ const Discussion = () => {
         <FullComment commentId={selectedItem} />
       </section>
       <section>
-        <AddComment OnAddPost={postCommentHandler} />
+        <AddComment setComments={setComments} />
       </section>
     </main>
   );
