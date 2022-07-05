@@ -6,7 +6,7 @@
   background: #e0e7ff;
   color: #4338ca;
   width: 400px;
-  height: 200px;
+  height: 300px;
   border-radius: 5px;
   padding: 10px 10px;
 }
@@ -17,11 +17,13 @@ label {
   margin-right: 5px;
 }
 button {
+  display: flex;
+  align-items: center;
   outline: none;
   padding: 5px 10px;
-  background-color: #5938ee;
+  background-color: #3b4d88;
   color: #ffffff;
   border-radius: 5px;
-  border: 1px solid #6d28d9;
-  margin-bottom: 5px;
+  border: 1px solid #4338ca;
+  margin: 20px 0;
 }

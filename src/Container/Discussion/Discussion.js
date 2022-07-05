@@ -12,9 +12,7 @@ const Discussion = () => {
   useEffect(() => {
     const getComments = async () => {
       try {
-        const { data } = await axios.get(
-          "https://jsonplaceholder.typicode.com/comments"
-        );
+        const { data } = await axios.get("http://localhost:3001/comments");
         setComments(data.slice(0, 4));
       } catch (error) {
         console.log(error);
@@ -26,6 +24,8 @@ const Discussion = () => {
   const selectCommentHandler = (id) => {
     setSelectedItem(id);
   };
+
+  // 4 comment => 3 comment => setComment(res.data) => clickHandler()
 
   return (
     <main>
