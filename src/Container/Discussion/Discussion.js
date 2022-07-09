@@ -28,19 +28,18 @@ const Discussion = () => {
 
   const renderComments = () => {
     let renderValue = <p>loading...</p>;
-    if(error) renderValue=<p>fetching data faild !</p>
-    if(comments && !error){
-      renderValue=comments.map((c) => (
+    if (error) renderValue = <p>fetching data faild !</p>;
+    if (comments && !error) {
+      renderValue = comments.map((c) => (
         <Comment
           name={c.name}
           email={c.email}
           key={c.id}
           onClick={() => selectCommentHandler(c.id)}
         />
-      ))
+      ));
     }
     return renderValue;
-   
   };
 
   // 4 comment => 3 comment => setComment(res.data) => clickHandler()
@@ -49,7 +48,11 @@ const Discussion = () => {
     <main>
       <section>{renderComments()}</section>
       <section>
-        <FullComment commentId={selectedItem} />
+        <FullComment
+          commentId={selectedItem}
+          setComments={setComments}
+          setSelectedItem={setSelectedItem}
+        />
       </section>
       <section>
         <AddComment setComments={setComments} />
