@@ -1,5 +1,5 @@
-import axios from "axios";
 import { useState } from "react";
+import http from "../../Services/ServicesHttp";
 import "./AddComment.css";
 const AddComment = ({ setComments }) => {
   const [comment, setComment] = useState({ name: "", email: "", content: "" });
@@ -11,11 +11,11 @@ const AddComment = ({ setComments }) => {
 
   const postCommentHandler = async () => {
     try {
-      await axios.post("http://localhost:3001/comments", {
+      await http.post("/comments", {
         ...comment,
         postId: 10,
       });
-      const { data } = await axios.get("http://localhost:3001/comments");
+      const { data } = await http.get("/comments");
       setComments(data);
     } catch (error) {}
   };

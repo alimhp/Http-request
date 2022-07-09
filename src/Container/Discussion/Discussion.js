@@ -4,6 +4,7 @@ import AddComment from "../../component/Add-Comment/AddComment";
 import "./Discussion.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import http from "../../Services/ServicesHttp";
 
 const Discussion = () => {
   const [comments, setComments] = useState(null);
@@ -13,7 +14,7 @@ const Discussion = () => {
   useEffect(() => {
     const getComments = async () => {
       try {
-        const { data } = await axios.get("http://localhost:3001/comments");
+        const { data } = await http.get("/comments");
         setComments(data);
       } catch (error) {
         setError(true);
